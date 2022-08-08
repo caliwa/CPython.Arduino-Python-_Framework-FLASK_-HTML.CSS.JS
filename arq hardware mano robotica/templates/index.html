@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ARQ Hardware</title>
+		<meta name="viewport" content= "width=device-width, user-scalable=no">
+	</head>
+
+	<body>
+		{% block content %}
+		<div class='interItems'>
+			{% if centHTML == 0 %}
+				<h2 style="padding-top: 2rem;">BRAZO ROBÓTICO 🤖</h2>
+				<div style="padding-top: 8rem;">
+					<h1>Creado por: Carlos González</h1>
+					<h2 >Oprime para seguir</h2>
+					<form action='#' method='POST'>
+						<button class='onButton button-73 tamaño' name="continuar" value="continuar">Continuar</button>
+					</form>
+				</div>
+			{% elif centHTML == 1 %}
+				<h1>Controles Brazo Robótico - ARQ. Hardware 2022 01 </h1>
+				{% if contadorVida == 3 %}
+					<h3 style="color:green;">Usted tiene 3 vidas :D</h3>
+				{% elif contadorVida == 2 %}
+					<h3 style="color: purple;">Usted tiene 2 vidas</h3>
+				{% elif contadorVida == 1 %}
+					<h3 style="color: red;">Usted tiene 1 vida D:</h3>
+				{% endif %}
+				<div id="esperando" style="display: none;">
+					<h2 style="padding-top: 175px;">Validando tiro...</h2>
+				</div>
+				<div id="botones" class='interactiveButtons grid'>
+					<form action='#' method='POST'>
+						<div class="uno flex">
+							<div style="padding-top: 60px;">
+								<button class='onButton button-73 tamaño' name="bizq" value="bizq">Izquierda</button>
+							</div>
+							{% if avanzar == 1 %}
+							<div class="grid">
+								<button class='onButton button-73 tamaño' name="barrb" value="barrb">Adelante</button>
+								<button class='onButton button-73 tamaño' name="babaj" value="babaj">Atrás</button>
+							</div>
+							{% endif %}
+							<div style="padding-top: 60px;">
+								<button  class='onButton button-73 tamaño' name="bder" value="bder">Derecha</button>
+							</div>
+						</div>
+						{% if lanzar == 1 %}
+						<button style="color:orange;" class='onButton button-73 tamaño' onclick="ocultarBotones()" name="lanzar" value="lanzar">Lanzar</button>
+						{% endif %}
+						<button style="color:blue;" class='onButton button-73 tamaño' name="bajar" value="bajar">Subir/Bajar</button>
+						<div class="dos">
+							<button style="color:red;" class='onButton button-73 tamaño'' name="agarre" value="agarre">AGARRE</button>
+						</div>
+					</form>
+					<br><br><br><br>
+					<br><br><br><br>
+					<br><br><br><br>
+					<br><br><br><br>
+					<br><br><br><br>
+					<br><br><br><br>
+					
+					<div class="centrar">
+						<h2>MARCADOR</h2>
+						<p class="marcador tamañoMarcador">{{hola}}</p>
+					</div>
+				</div>
+			{% elif centHTML == 2 %}
+				<h2 style="padding-top: 2rem;">FINAL DE LA P🤖RTIDA</h2>
+					<h1>Creado por: Carlos González</h1>
+					<h2 >Oprime para reintentar</h2>
+					<img style="padding-bottom: 2rem;" src="https://i.gifer.com/WYHC.gif" alt="Funny image"> 
+					<form action='#' method='POST'>
+						<button class='onButton button-73 tamaño' name="reintentar" value="reintentar">Reintentar</button>
+					</form>
+			{% endif %}
+		</div>
+		{% endblock content %}
+	</body>
+
+	<script>
+		/*
+		setTimeout(ocultarBotones, 5000);
+		function ocultarBotones(){
+			document.getElementById("botones").style.display = "none";
+			document.getElementById("esperando").style.display = "block";
+
+		}
+		*/
+	</script>
+
+	<style>
+		.interItems {
+			text-align: center;
+		}
+
+		.interactiveButtons {
+			padding: 2em;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 200px;
+		}
+
+		.onButton {
+			width: 10em;
+			height: 10em;
+		}
+		
+		.offButton {
+			width: 10em;
+			height: 10em;
+		}
+
+		.centrar{
+			align-items: center;
+			justify-content: center;
+			padding-bottom: 20rem;
+		}
+
+		html{
+			background-color: #F28773;
+		}
+
+		.tamaño{
+			width: 130px;
+			height: 130px;
+		}
+
+		.button-73 {
+			appearance: none;
+			background-color: #FFFFFF;
+			border-radius: 40em;
+			border-style: none;
+			box-shadow: #ADCFFF 0 -12px 6px inset;
+			box-sizing:border-box;
+			color: #000000;
+			cursor: pointer;
+			display: inline-block;
+			font-family: -apple-system,sans-serif;
+			font-size: 1.2rem;
+			font-weight: 700;
+			letter-spacing: -.24px;
+			margin: 0;
+			outline: none;
+			padding: 1rem 1.3rem;
+			quotes: auto;
+			text-align: center;
+			text-decoration: none;
+			transition: all .15s;
+			user-select: none;
+			-webkit-user-select: none;
+			touch-action: manipulation;
+		}
+
+		.button-73:hover {
+			background-color: #FFC229;
+			box-shadow: #FF6314 0 -6px 8px inset;
+			transform: scale(1.125);
+		}
+
+		.button-73:active {
+			transform: scale(1.025);
+		}
+
+		@media (min-width: 1200px) {
+			.button-73 {
+				font-size: 1.5rem;
+				padding: .75rem 2rem;
+			}
+		}
+
+		.flex{
+			display: flex;
+		}
+
+		.grid{
+			display: grid;
+			grid-template-columns: 1f 1fr;
+			grid-template-rows: 1fr 1fr;	
+		}
+
+		.uno{
+			grid-row: 1/2;
+			row-gap: 20px;
+		}
+
+		.dos{
+			grid-row: 2/3;
+		}
+
+		.marcador {
+			display:inline-flex;
+			align-items:center;
+			justify-content:center;
+			width:200px;
+			height:200px;
+			border-radius:50%;
+			background-color:#000;
+			color:#fff;
+			font-size: 170px;
+		}
+	</style>
+</html>
